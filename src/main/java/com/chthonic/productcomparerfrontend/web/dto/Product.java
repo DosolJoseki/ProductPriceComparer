@@ -12,4 +12,5 @@ public class Product {
     private String title;
     private double price;
     private URL image;
+    private String logoImage;
 }

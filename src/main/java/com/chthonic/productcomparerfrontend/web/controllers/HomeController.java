@@ -39,9 +39,24 @@ public class HomeController {
             }
         }
 
+        setLogoImageByShop(products);
+
         model.addAttribute("products", products);
         model.addAttribute("query", query);
 
         return "home";
+    }
+
+    private void setLogoImageByShop(List<Product> products) {
+        products.stream().forEach(product -> {
+            switch (product.getShopName()) {
+                case "Spar":
+                    product.setLogoImage("/images/spar-logo.png");
+                    break;
+                case "Mercator":
+                    product.setLogoImage("/images/mercator-logo.webp");
+                    break;
+            }
+        });
     }
 }

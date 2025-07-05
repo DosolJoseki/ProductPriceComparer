@@ -1,10 +1,20 @@
 <!-- templates/fragments/product-item.html -->
-<div th:fragment="product-item (product)">
-  <div class="product-card">
-    <img th:src="${product.image}" alt="product image"/>
-    <div class="shop-name" th:text="${product.shopName}">[ShopName]</div>
-    <div class="badge" th:text="${product.brand}">[Brand]</div>
-    <div class="product-name" th:text="${product.name}">[Name]</div>
-    <div class="product-price" th:text="'€' + ${product.price}">[Price]</div>
+<div th:fragment="product-item (product)"
+     class="product-card"
+     style="display: flex; gap: 1rem; align-items: flex-start; border: 1px solid #ccc; padding: 1rem; margin-bottom: 1rem;">
+
+  <div class="image-wrapper" style="flex: 0 0 120px; position: relative;">
+    <img th:src="@{${product.image}}" alt="product image"
+         style="width: 150px; height: 150px; object-fit: contain; border: 1px solid #ddd;">
+
+    <img th:src="@{${product.logoImage}}" alt="icon"
+         style="position: absolute; top: 5px; right: 5px; width: 50px; height: 50px;">
+  </div>
+
+  <div class="info" style="display: flex; flex-direction: column; gap: 0.5rem;">
+    <div class="product-name" th:text="${product.name}" style="font-weight: bold;"></div>
+    <div class="product-brand" th:text="'Бренд: ' + ${product.brand}"></div>
+    <div class="product-price" th:text="'Цена: €' + ${product.price}"></div>
+    <div class="product-shop" th:text="'Магазин: ' + ${product.shopName}"></div>
   </div>
 </div>
