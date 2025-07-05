@@ -1,0 +1,29 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product List</title>
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
+</head>
+<body>
+
+<h1>Поиск товаров</h1>
+
+<form th:action="@{/products}" method="get">
+    <input type="text" name="query" placeholder="Поиск..."/>
+    <button type="submit">Поиск</button>
+</form>
+
+<div class="sort">
+    <a th:href="@{/products(sort='name', query=${query})}">Сортировать по имени</a> |
+    <a th:href="@{/products(sort='price', query=${query})}">Сортировать по цене</a>
+</div>
+
+<div class="product-list">
+    <div th:each="product : ${products}">
+        <div th:replace="fragments/product-item :: product-item(product=${product})"></div>
+    </div>
+</div>
+
+</body>
+</html>

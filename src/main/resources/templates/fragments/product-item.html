@@ -1,0 +1,10 @@
+<!-- templates/fragments/product-item.html -->
+<div th:fragment="product-item (product)">
+  <div class="product-card">
+    <img th:src="${product.image}" alt="product image"/>
+    <div class="shop-name" th:text="${product.shopName}">[ShopName]</div>
+    <div class="badge" th:text="${product.brand}">[Brand]</div>
+    <div class="product-name" th:text="${product.name}">[Name]</div>
+    <div class="product-price" th:text="'€' + ${product.price}">[Price]</div>
+  </div>
+</div>
