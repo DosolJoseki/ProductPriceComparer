@@ -1,0 +1,15 @@
+<div th:fragment="product-item-single(product)">
+    <div class="product-single" style="display: flex; align-items: center; gap: 1rem;">
+        <div style="position: relative; width: 100px; height: 100px; flex-shrink: 0;">
+            <img th:src="${product.image}" alt="product image" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;"/>
+
+            <img src="${product.logoImage}" alt="overlay"
+                 style="position: absolute; top: 0; right: 0; width: 30px; height: 30px; border-radius: 50%; background: white; padding: 2px;"/>
+        </div>
+        <div class="info" style="display: flex; flex-direction: column; gap: 4px;">
+            <p class="title" th:text="${product.name}" style="font-weight: bold;">Название</p>
+            <p class="shop" th:text="${product.shopName}">Магазин</p>
+            <p class="price" th:text="${product.price + ' €'}" style="color: green;">Цена</p>
+        </div>
+    </div>
+</div>

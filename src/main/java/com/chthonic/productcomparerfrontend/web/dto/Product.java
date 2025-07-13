@@ -10,6 +10,7 @@ public class Product {
     private String brand;
     private String name;
     private String title;
+    private String denormalizedTitle;
     private double price;
     private URL image;
     private String logoImage;

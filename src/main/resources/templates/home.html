@@ -7,23 +7,26 @@
 </head>
 <body>
 
-<h1>Поиск товаров</h1>
+<h1>Product search</h1>
 
-<form th:action="@{/products}" method="get">
+<form th:action="@{/grouped-products}" method="get">
     <input type="text" name="query" placeholder="Поиск..."/>
     <button type="submit">Поиск</button>
 </form>
 
 <div class="sort">
-    <a th:href="@{/products(sort='name', query=${query})}">Сортировать по имени</a> |
-    <a th:href="@{/products(sort='price', query=${query})}">Сортировать по цене</a>
+    <a th:href="@{/products(sort='name', query=${query})}">Sort by name</a> |
+    <a th:href="@{/products(sort='price', query=${query})}">Sort by price</a>
 </div>
 
-<div class="product-list">
-    <div th:each="product : ${products}">
-        <div th:replace="fragments/product-item :: product-item(product=${product})"></div>
+<div th:each="entry : ${groupedProducts}">
+    <div th:if="${#lists.size(entry.value) == 1}">
+        <div th:replace="fragments/product-item-single :: product-item-single(product=${entry.value[0]})"></div>
+    </div>
+
+    <div th:if="${#lists.size(entry.value) > 1}">
+        <div th:replace="fragments/product-item-group :: product-item-group(product=${entry.value[0]}, name=${entry.key}, products=${entry.value})"></div>
     </div>
 </div>
-
 </body>
 </html>
