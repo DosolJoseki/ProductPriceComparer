@@ -9,7 +9,9 @@
         <div class="info" style="display: flex; flex-direction: column; gap: 4px;">
             <p class="title" th:text="${product.name}" style="font-weight: bold;">Название</p>
             <p class="shop" th:text="${product.shopName}">Магазин</p>
-            <p class="price" th:text="${product.price + ' €'}" style="color: green;">Цена</p>
+            <div style="display: flex; flex-direction: row">
+                <p class="price" th:text="${product.price + ' €'}" style="color: green;">Цена</p>
+            </div>
         </div>
     </div>
 </div>

@@ -14,4 +14,5 @@ public class Product {
     private double price;
     private URL image;
     private String logoImage;
+    private boolean available;
 }

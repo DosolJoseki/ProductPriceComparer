@@ -8,6 +8,10 @@
                  style="position: absolute; top: 0; right: 0; width: 30px; height: 30px; border-radius: 50%; background: white; padding: 2px;"/>
         </div>
         <div class="info" style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="display: flex; flex-direction: row">
+                <span class="shop" style="font-weight: bold" th:text="${product.name}">Продукт</span>
+            </div>
+
             <div th:each="p : ${products}" class="variant">
                 <span class="shop" th:text="${p.shopName}">Магазин</span>:
                 <span class="price" th:text="${p.price + ' €'}">Цена</span>

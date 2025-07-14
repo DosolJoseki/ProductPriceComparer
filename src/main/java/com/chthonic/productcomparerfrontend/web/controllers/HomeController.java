@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -64,7 +65,15 @@ public class HomeController {
 //        }
 
         setLogoImageByShop(products);
-        products = products.entrySet().stream().filter(e -> e.getValue().size() > 1).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        products = products.entrySet().stream()
+                .filter(e -> e.getValue().size() > 1)
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (e1, e2) -> e1, // merge function (not used here)
+                        LinkedHashMap::new // сохраняем порядок сортировки
+                ));
+//                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
 
         model.addAttribute("groupedProducts", products);
